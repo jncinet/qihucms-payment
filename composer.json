@@ -1,0 +1,33 @@
+{
+  "name": "jncinet/qihucms-payment",
+  "description": "qihucms payment.",
+  "keywords": [
+    "laravel",
+    "qihucms",
+    "payment"
+  ],
+  "homepage": "https://www.qihucms.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "zhangye",
+      "email": "y@qilephp.com"
+    }
+  ],
+  "require": {
+    "simplesoftwareio/simple-qrcode": "^2.0",
+    "yansongda/pay": "^2.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Qihucms\\Payment\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Qihucms\\Payment\\PaymentServiceProvider"
+      ]
+    }
+  }
+}
