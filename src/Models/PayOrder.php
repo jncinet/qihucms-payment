@@ -2,6 +2,7 @@
 
 namespace Qihucms\Payment\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -26,9 +27,6 @@ class PayOrder extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
     public function orderable()
     {
         return $this->morphTo();
