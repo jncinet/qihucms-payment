@@ -4,17 +4,17 @@ use Illuminate\Routing\Router;
 
 // 接口
 Route::group([
-    'prefix' => 'payment',
+    'prefix' => config('qihu.payment_prefix', 'payment'),
     'namespace' => 'Qihucms\Payment\Controllers\Api',
     'middleware' => ['api'],
-    'as' => 'api.'
+    'as' => 'api.payment.'
 ], function (Router $router) {
     $router->any('pay/{id}', 'PaymentController@pay')
-        ->name('payment.pay');
+        ->name('pay');
     $router->any('{driver}/notify', 'PaymentController@notify')
-        ->name('payment.notify');
+        ->name('notify');
     $router->get('completed', 'PaymentController@completed')
-        ->name('payment.completed');
+        ->name('completed');
 });
 
 // 后台管理

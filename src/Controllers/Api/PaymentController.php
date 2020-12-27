@@ -31,17 +31,17 @@ class PaymentController extends ApiController
                 if ($app instanceof GatewayApplicationInterface) {
                     return $app->{$order->gateway}($order);
                 } else {
-                    $msg = '方法不存在';
+                    $msg = __('payment::message.channel_not_find');
                 }
             } else {
-                $msg = '无效的订单';
+                $msg = __('payment::message.invalid_order_id');
             }
         } else {
-            $msg = '订单不存在';
+            $msg = __('payment::message.order_not_find');
         }
 
-        if (\request()->isMethod('POST')) {
-            return \response()->json([$msg], 422);
+        if (request()->isMethod('POST')) {
+            return response()->json([$msg], 422);
         }
 
         return view('payment::error', compact('msg'));
@@ -64,7 +64,7 @@ class PaymentController extends ApiController
             }
         }
 
-        return \response('error', 400);
+        return response('error', 400);
     }
 
     /**
@@ -99,12 +99,10 @@ class PaymentController extends ApiController
 
             return view('payment::fail', compact('order'));
 
-        } else {
-
-            $msg = '订单不存在';
-
-            return view('payment::error', compact('msg'));
-
         }
+
+        $msg = __('payment::message.order_not_find');
+
+        return view('payment::error', compact('msg'));
     }
 }

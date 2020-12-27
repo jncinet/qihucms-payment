@@ -7,8 +7,11 @@ use Qihucms\Payment\Contracts\GatewayApplicationInterface;
 use Yansongda\Pay\Exceptions\InvalidGatewayException;
 
 /**
- * @method static Alipay alipay() 支付宝
- * @method static Wechat wechat() 微信
+ * Class Pay
+ *
+ * @method static Alipay alipay()
+ * @method static Wechat wechat()
+ * @package Qihucms\Payment
  */
 class Pay
 {

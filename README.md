@@ -1,36 +1,63 @@
-**支付管理**
+<h1 align="center">支付管理</h1>
 
-###引用库
+### 引用库
  
- 基础支付扩展包：[yansongda/laravel-pay](https://github.com/yansongda/laravel-pay)
- 
+ 基础支付扩展包：[yansongda/laravel-pay](https://github.com/yansongda/laravel-pay)  
  扫码支付二维码生成：[simplesoftwareio/simple-qrcode](https://github.com/SimpleSoftwareIO/simple-qrcode)
 
-##安装：
-```
-composer require jncinet/qihucms-payment
-```
-
-###第一步：创建表
-```
-php artisan migrate
+## 安装：
+```shell
+$ composer require jncinet/qihucms-payment
 ```
 
-###第二步：添加后台管理菜单
+## 开始
+### 数据迁移
+```shell
+$ php artisan migrate
 ```
-payment/pay-orders
+### 发布资源
+```shell
+$ php artisan vendor:publish --provider="Qihucms\Payment\PaymentServiceProvider"
 ```
 
-##使用
-```php
-创建订单时，先创建支付订单记录：
-PayOrder::create([
-...
-]);
-```
-目录说明
-```
-支付目录：payment/pay/{$id}
-支付回调：payment/{driver}/notify
-支付完成：payment/completed
-```
+### 添加后台管理菜单
++ 链接名称：支付记录  
++ 链接地址：payment/pay-orders
+
+### 接口说明
+#### 发起支付
++ 请求方式：ANY
++ 链接地址：payment/pay/{id=订单号}
++ 返回值：
+  - GET 请求返回视图页
+  - POST 请求返回JSON支付参数
+
+#### 支付回调
++ 请求方式：ANY
++ 链接地址：payment/{driver=支付渠道}/notify
++ 返回值：SUCCESS
+
+#### 订单支付结果
++ 请求方式：GET
++ 链接地址：payment/completed?id=订单号
++ 返回值：支付结果页面
+
+## 数据库
+
+### 会员收款卡号：currency_bank_cards
+| Field             | Type      | Length    | AllowNull | Default   | Comment       |
+| :----             | :----     | :----     | :----     | :----     | :----         |
+| id                | bigint    |           |           |           |               |
+| orderable_type    | varchar   | 255       |           |           |               |
+| orderable_id      | bigint    |           |           |           |               |
+| user_id           | bigint    |           |           |           | 会员ID         |
+| driver            | varchar   | 55        |           |           | 支付渠道        |
+| gateway           | varchar   | 55        |           |           | 支付方法        |
+| type              | varchar   | 55        |           | NULL      | 业务类型        |
+| subject           | varchar   | 255       |           |           | 订单标题        |
+| total_amount      | decimal   | 8,2       |           |           | 支付金额        |
+| params            | json      |           | Y         | NULL      | 支付参数        |
+| result            | json      |           | Y         | NULL      | 响应数据        |
+| status            | tinyint   |           |           | 0         | 业务状态        |
+| created_at        | timestamp |           | Y         | NULL      | 创建时间        |
+| updated_at        | timestamp |           | Y         | NULL      | 更新时间        |

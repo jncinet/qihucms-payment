@@ -16,6 +16,8 @@ class PaymentServiceProvider extends ServiceProvider
         $this->app->singleton(Pay::class, function () {
             return new Pay();
         });
+
+        $this->app->alias(Pay::class, 'qihucms-pay');
     }
 
     /**
@@ -35,14 +37,8 @@ class PaymentServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/vendor/payment'),
-        ], 'views');
-
-        $this->publishes([
             __DIR__ . '/../resources/lang' => resource_path('lang/vendor/payment'),
-        ], 'lang');
-
-        $this->publishes([
             __DIR__.'/../resources/assets' => public_path('vendor/payment'),
-        ], 'public');
+        ]);
     }
 }

@@ -22,8 +22,8 @@ class AppGateway extends Gateway implements GatewayInterface
             'total_fee' => bcmul($order->total_amount, 100),
         ]);
 
-        if (\request()->isMethod('POST')) {
-            return \response()->json($result);
+        if (request()->isMethod('POST')) {
+            return response()->json($result);
         }
 
         return view('payment::wechat.app', compact('result', 'order'));
