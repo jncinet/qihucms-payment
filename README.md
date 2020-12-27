@@ -5,7 +5,7 @@
  基础支付扩展包：[yansongda/laravel-pay](https://github.com/yansongda/laravel-pay)  
  扫码支付二维码生成：[simplesoftwareio/simple-qrcode](https://github.com/SimpleSoftwareIO/simple-qrcode)
 
-## 安装：
+## 安装
 ```shell
 $ composer require jncinet/qihucms-payment
 ```
