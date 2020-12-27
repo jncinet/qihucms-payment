@@ -44,7 +44,7 @@ $ php artisan vendor:publish --provider="Qihucms\Payment\PaymentServiceProvider"
 
 ## 数据库
 
-### 会员收款卡号：currency_bank_cards
+### 支付订单表：pay_orders
 | Field             | Type      | Length    | AllowNull | Default   | Comment       |
 | :----             | :----     | :----     | :----     | :----     | :----         |
 | id                | bigint    |           |           |           |               |
