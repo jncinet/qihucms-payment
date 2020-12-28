@@ -50,7 +50,7 @@ class PayOrdersController extends Controller
         $grid->column('gateway', __('payment::pay_order.gateway'));
         $grid->column('type', __('payment::pay_order.type'));
         $grid->column('user_nickname', __('user.nickname'))->display(function () {
-            return $this->user->nickname ?? '非本站会员';
+            return $this->user->username ?? '非本站会员';
         });
         $grid->column('subject', __('payment::pay_order.subject'));
         $grid->column('total_amount', __('payment::pay_order.total_amount'));
@@ -72,7 +72,7 @@ class PayOrdersController extends Controller
 
         $show->field('id', __('payment::pay_order.id'));
         $show->field('user_id', __('payment::pay_order.user_id'))->as(function () {
-            return $this->user->nickname ?? '非本站会员';
+            return $this->user->username ?? '非本站会员';
         });
         $show->field('driver', __('payment::pay_order.driver'));
         $show->field('gateway', __('payment::pay_order.gateway'));
