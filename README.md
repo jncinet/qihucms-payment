@@ -45,6 +45,7 @@ $ php artisan vendor:publish --provider="Qihucms\Payment\PaymentServiceProvider"
 ## 数据库
 
 ### 支付订单表：pay_orders
+
 | Field             | Type      | Length    | AllowNull | Default   | Comment       |
 | :----             | :----     | :----     | :----     | :----     | :----         |
 | id                | bigint    |           |           |           |               |
