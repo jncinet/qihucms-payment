@@ -49,7 +49,7 @@ class PayOrdersController extends Controller
         $grid->column('driver', __('payment::pay_order.driver'));
         $grid->column('gateway', __('payment::pay_order.gateway'));
         $grid->column('type', __('payment::pay_order.type'));
-        $grid->column('user_nickname', __('user.nickname'))->display(function () {
+        $grid->column('user.username', __('user.username'))->display(function () {
             return $this->user->username ?? '非本站会员';
         });
         $grid->column('subject', __('payment::pay_order.subject'));
