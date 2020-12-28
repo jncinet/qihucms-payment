@@ -2,7 +2,7 @@
 
 namespace Qihucms\Payment\Controllers\Api;
 
-use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Qihucms\Payment\Contracts\GatewayApplicationInterface;
@@ -10,7 +10,7 @@ use Qihucms\Payment\Gateways\Alipay\Support;
 use Qihucms\Payment\Models\PayOrder;
 use Yansongda\Pay\Pay;
 
-class PaymentController extends ApiController
+class PaymentController extends Controller
 {
     /**
      * 发起支付
