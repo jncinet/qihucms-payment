@@ -49,9 +49,7 @@ class PayOrdersController extends Controller
         $grid->column('driver', __('payment::pay_order.driver'));
         $grid->column('gateway', __('payment::pay_order.gateway'));
         $grid->column('type', __('payment::pay_order.type'));
-        $grid->column('user.username', __('user.username'))->display(function () {
-            return $this->user->username ?? '非本站会员';
-        });
+        $grid->column('user.username', __('user.username'));
         $grid->column('subject', __('payment::pay_order.subject'));
         $grid->column('total_amount', __('payment::pay_order.total_amount'));
         $grid->column('status', __('payment::pay_order.status.label'))
@@ -72,7 +70,7 @@ class PayOrdersController extends Controller
 
         $show->field('id', __('payment::pay_order.id'));
         $show->field('user_id', __('payment::pay_order.user_id'))->as(function () {
-            return $this->user->username ?? '非本站会员';
+            return $this->user->username ?? '';
         });
         $show->field('driver', __('payment::pay_order.driver'));
         $show->field('gateway', __('payment::pay_order.gateway'));
@@ -104,7 +102,7 @@ class PayOrdersController extends Controller
                     return [$user->id => $user->username];
                 }
             })
-            ->ajax(route('admin.user.select'))
+            ->ajax(route('admin.select.user'))
             ->required();
         $form->text('driver', __('payment::pay_order.driver'))->required();
         $form->text('gateway', __('payment::pay_order.gateway'))->required();
