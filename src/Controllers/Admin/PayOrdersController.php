@@ -104,7 +104,7 @@ class PayOrdersController extends Controller
                     return [$user->id => $user->username];
                 }
             })
-            ->ajax(route('api.article.select.users.q'))
+            ->ajax(route('admin.user.select'))
             ->required();
         $form->text('driver', __('payment::pay_order.driver'))->required();
         $form->text('gateway', __('payment::pay_order.gateway'))->required();
